@@ -423,6 +423,7 @@ macro_rules! impl_adc_interface {
     }
 }
 
+#[allow(unused_imports)]
 pub use implementation::*;
 
 mod implementation {
