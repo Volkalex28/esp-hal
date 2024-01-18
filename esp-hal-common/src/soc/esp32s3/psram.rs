@@ -16,6 +16,15 @@
 //! during the compilation process. The available `PSRAM` sizes are `2MB`,
 //! `4MB`, and `8MB`.
 
+#[cfg(any(
+    feature = "psram-2m",
+    feature = "psram-4m",
+    feature = "psram-8m",
+    feature = "opsram-2m",
+    feature = "opsram-4m",
+    feature = "opsram-8m",
+    feature = "opsram-16m"
+))]
 static mut INFO: Option<utils::PsramInfo> = None;
 
 fn psram_vaddr_start() -> u32 {
@@ -58,6 +67,15 @@ cfg_if::cfg_if! {
 
 const PSRAM_BYTES: usize = PSRAM_SIZE as usize * 1024 * 1024;
 
+#[cfg(any(
+    feature = "psram-2m",
+    feature = "psram-4m",
+    feature = "psram-8m",
+    feature = "opsram-2m",
+    feature = "opsram-4m",
+    feature = "opsram-8m",
+    feature = "opsram-16m"
+))]
 pub fn print_psram_info() {
     let info = unsafe { INFO.as_ref().expect("psram not initialized") };
 
