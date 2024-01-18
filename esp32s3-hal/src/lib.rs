@@ -151,4 +151,6 @@ unsafe fn post_init() {
 
     Wdt::<TIMG0>::set_wdt_enabled(false);
     Wdt::<TIMG1>::set_wdt_enabled(false);
+
+    psram::init_psram();
 }
